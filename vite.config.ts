@@ -63,7 +63,7 @@ export default defineConfig({
         manualChunks: {
           vendor: ["react", "react-dom"],
           radix: Object.keys(
-            JSON.parse(fs.readFileSync(path.join(import.meta.dirname, "package.json"), "utf-8")).dependencies
+            JSON.parse(fs.readFileSync(path.resolve(process.cwd(), "package.json"), "utf-8")).dependencies
           ).filter((dep) => dep.startsWith("@radix-ui")),
         },
       },
