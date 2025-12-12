@@ -255,7 +255,7 @@ export const posts = mysqlTable("posts", {
   id: int("id").autoincrement().primaryKey(),
   title: varchar("title", { length: 255 }).notNull(),
   content: text("content"),
-  images: json("images").$type<string[]>().default([]),
+  images: json("images").$type<string[]>(),
   layout: mysqlEnum("layout", ["carousel", "side_by_side", "collage"]).default("carousel").notNull(),
   published: boolean("published").notNull().default(false),
   createdAt: timestamp("createdAt").defaultNow().notNull(),

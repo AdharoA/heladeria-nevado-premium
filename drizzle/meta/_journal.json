@@ -57,6 +57,13 @@
       "when": 1764897893063,
       "tag": "0007_yellow_thunderbolts",
       "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "5",
+      "when": 1765577912030,
+      "tag": "0008_old_shriek",
+      "breakpoints": true
     }
   ]
 }
