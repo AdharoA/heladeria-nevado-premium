@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5" />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="theme-color" content="#000000" />
+  
+  <!-- Preconnect to critical third-party origins -->
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="preconnect" href="https://www.paypal.com" crossorigin>
+  <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+  
+  <!-- Font Awesome with font-display swap for faster text rendering -->
+  <style>
+    @font-face {
+      font-family: 'FontAwesome';
+      font-display: swap;
+      src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-solid-900.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'FontAwesome';
+      font-display: swap;
+      font-weight: 400;
+      src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-brands-400.woff2') format('woff2');
+    }
+  </style>
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" id="dynamic-favicon" />
+  <link rel="shortcut icon" href="/vite.svg" />
+  <link rel="apple-touch-icon" href="/vite.svg" />
+  
+  <!-- SEO Meta Tags -->
+  <title>Heladería Nevado Premium</title>
+  <meta name="description" content="Heladería Nevado Premium - Las mejores helados artesanales" />
+  <meta name="keywords" content="helados, artesanales, nevado, premium, postres" />
+  <meta property="og:title" content="Heladería Nevado Premium" />
+  <meta property="og:description" content="Las mejores helados artesanales" />
+  <meta property="og:type" content="website" />
+  
+  <!-- Fallback for no-js -->
+  <noscript>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  </noscript>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+  <script defer src="%VITE_ANALYTICS_ENDPOINT%/umami" data-website-id="%VITE_ANALYTICS_WEBSITE_ID%"></script>
+  <script defer src="https://www.paypal.com/sdk/js?client-id=AQcN4RyqvJVVxZK7zQMVJG1wSCd_1e4D9mPJ_GgRY5EAFS0uT_G-2m4S-Ydxf4Jq-0sLvH5fQ0qKVnNy&currency=USD"></script>
+</body>
+
+</html>

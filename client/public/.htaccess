@@ -1,0 +1,89 @@
+# Enable compression
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/plain
+  AddOutputFilterByType DEFLATE text/html
+  AddOutputFilterByType DEFLATE text/xml
+  AddOutputFilterByType DEFLATE text/css
+  AddOutputFilterByType DEFLATE text/javascript
+  AddOutputFilterByType DEFLATE application/xml
+  AddOutputFilterByType DEFLATE application/xhtml+xml
+  AddOutputFilterByType DEFLATE application/rss+xml
+  AddOutputFilterByType DEFLATE application/javascript
+  AddOutputFilterByType DEFLATE application/x-javascript
+  AddOutputFilterByType DEFLATE application/x-font-ttf
+  AddOutputFilterByType DEFLATE application/x-font-otf
+  AddOutputFilterByType DEFLATE font/truetype
+  AddOutputFilterByType DEFLATE font/opentype
+</IfModule>
+
+# Leverage browser caching
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 1 month"
+  
+  # Immediate expiration for HTML
+  ExpiresByType text/html "access plus 0 seconds"
+  
+  # 1 year for JS/CSS (with hash in filename)
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType text/css "access plus 1 year"
+  
+  # 1 year for images
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/gif "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/x-icon "access plus 1 year"
+  
+  # Fonts
+  ExpiresByType font/truetype "access plus 1 year"
+  ExpiresByType font/opentype "access plus 1 year"
+  ExpiresByType application/x-font-ttf "access plus 1 year"
+  ExpiresByType application/x-font-otf "access plus 1 year"
+  ExpiresByType application/x-font-woff "access plus 1 year"
+  ExpiresByType application/x-font-woff2 "access plus 1 year"
+  ExpiresByType application/font-woff "access plus 1 year"
+</IfModule>
+
+# Cache control headers
+<FilesMatch "\.js$">
+  Header set Cache-Control "max-age=31536000, public, immutable"
+</FilesMatch>
+
+<FilesMatch "\.css$">
+  Header set Cache-Control "max-age=31536000, public, immutable"
+</FilesMatch>
+
+<FilesMatch "\.(jpg|jpeg|png|gif|webp|svg|woff|woff2|ttf|otf|eot)$">
+  Header set Cache-Control "max-age=31536000, public, immutable"
+</FilesMatch>
+
+<FilesMatch "\.(html|htm)$">
+  Header set Cache-Control "max-age=3600, must-revalidate"
+</FilesMatch>
+
+# Security headers
+Header set X-Content-Type-Options "nosniff"
+Header set X-Frame-Options "DENY"
+Header set X-XSS-Protection "1; mode=block"
+Header set Referrer-Policy "no-referrer-when-downgrade"
+
+# Enable GZIP for web fonts
+<FilesMatch "\.(woff|woff2|ttf|otf)$">
+  Header set Content-Type "application/x-font-woff"
+  Header set Content-Encoding "gzip"
+</FilesMatch>
+
+# Rewrite rules for SPA
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  
+  # Cache busting for static files
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  
+  # Send all requests to index.html for SPA routing
+  RewriteRule ^(?!api/)(.*)$ index.html [L]
+</IfModule>
